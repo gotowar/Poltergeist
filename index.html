@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poltergeist  - 3D Clothing Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Poltergeist</div>
+            <nav class="nav">
+                <button class="nav-btn" onclick="showView('shop')">Shop</button>
+                <button class="nav-btn" id="adminNavBtn" style="display:none;" onclick="showView('admin')">Admin</button>
+                <button class="nav-btn" id="loginBtn" onclick="showView('login')">
+                    <span>👤</span> Login
+                </button>
+                <button class="nav-btn" id="logoutBtn" style="display:none;" onclick="logout()">
+                    <span>🚪</span> Logout
+                </button>
+                <button class="nav-btn" onclick="showView('cart')">
+                    <span>🛒</span>
+                    <span id="cartBadge" class="cart-badge" style="display:none;">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Shop View -->
+        <div id="shopView">
+            <div class="categories" id="categories"></div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+
+        <!-- Login View -->
+        <div id="loginView" class="hidden">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
+                    <button class="auth-tab" onclick="switchAuthTab('register')">Register</button>
+                </div>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-input" id="loginUsername" required>
+                        <div class="error-msg" id="loginUsernameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="loginPassword" required>
+                        <div class="error-msg" id="loginPasswordError"></div>
+                    </div>
+                    <div class="error-msg" id="loginError"></div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <div class="demo-info">Demo: admin/admin123 or user/user123</div>
+                </form>
+
+                <form id="registerForm" class="hidden">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-input" id="registerUsername" required>
+                        <div class="error-msg" id="registerUsernameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="registerPassword" required>
+                        <div class="error-msg" id="registerPasswordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-input" id="registerConfirmPassword" required>
+                        <div class="error-msg" id="registerConfirmError"></div>
+                    </div>
+                    <button type="submit" class="btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Cart View -->
+        <div id="cartView" class="hidden">
+            <div class="cart-container">
+                <h2 class="page-title">Shopping Cart</h2>
+                <div id="cartItems"></div>
+            </div>
+        </div>
+
+        <!-- Checkout View -->
+        <div id="checkoutView" class="hidden">
+            <div class="checkout-container">
+                <h2 class="page-title">Checkout</h2>
+                <form id="checkoutForm" class="checkout-form">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" id="checkoutName" required>
+                        <div class="error-msg" id="checkoutNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" id="checkoutEmail" required>
+                        <div class="error-msg" id="checkoutEmailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-input" id="checkoutAddress" required>
+                        <div class="error-msg" id="checkoutAddressError"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-input" id="checkoutCity" required>
+                            <div class="error-msg" id="checkoutCityError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">ZIP Code</label>
+                            <input type="text" class="form-input" id="checkoutZip" required>
+                            <div class="error-msg" id="checkoutZipError"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Card Number</label>
+                        <input type="text" class="form-input" id="checkoutCard" placeholder="1234 5678 9012 3456" required>
+                        <div class="error-msg" id="checkoutCardError"></div>
+                    </div>
+                    <div class="cart-total">
+                        <div class="cart-total-row">
+                            <span>Total:</span>
+                            <span id="checkoutTotal">$0.00</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-checkout">Complete Order</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin View -->
+        <div id="adminView" class="hidden">
+            <div class="admin-container">
+                <h2 class="page-title">Admin Panel - Product Management</h2>
+                
+                <div class="admin-add-form">
+                    <h3 style="margin-bottom: 1rem;">Add New Product</h3>
+                    <form id="addProductForm">
+                        <div class="admin-form-grid">
+                            <input type="text" class="form-input" id="newProductName" placeholder="Product Name" required>
+                            <input type="number" class="form-input" id="newProductPrice" placeholder="Price" step="0.01" required>
+                            <select class="form-input" id="newProductCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Tops">Tops</option>
+                                <option value="Bottoms">Bottoms</option>
+                                <option value="Dresses">Dresses</option>
+                                <option value="Outerwear">Outerwear</option>
+                                <option value="Footwear">Footwear</option>
+                            </select>
+                            <input type="text" class="form-input" id="newProductEmoji" placeholder="Emoji (e.g., 👕)" required>
+                            <input type="number" class="form-input" id="newProductStock" placeholder="Stock" required>
+                            <input type="text" class="form-input" id="newProductDesc" placeholder="Description" required>
+                        </div>
+                        <button type="submit" class="btn-primary">➕ Add Product</button>
+                    </form>
+                </div>
+
+                <div class="admin-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
