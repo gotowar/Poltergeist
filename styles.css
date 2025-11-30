@@ -1,509 +1,692 @@
+/* ============================================================================
+   GLOBAL RESET
+   Removes default browser styling to ensure consistency across all browsers
+   ============================================================================ */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;           /* Remove default margins from all elements */
+    padding: 0;          /* Remove default padding from all elements */
+    box-sizing: border-box;  /* Include padding and border in element's total width/height */
 }
+
+/* ============================================================================
+   BODY STYLES
+   Sets up the base styling for the entire page
+   ============================================================================ */
 
 body {
+    /* System font stack - uses the default font for each operating system */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: #f3f4f6;
-    color: #1f2937;
+    background: #f3f4f6;  /* Light gray background color */
+    color: #1f2937;       /* Dark gray text color for readability */
 }
 
+/* ============================================================================
+   HEADER SECTION
+   The top navigation bar that stays visible when scrolling
+   ============================================================================ */
+
 .header {
-    background: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: white;                        /* White background for the header */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);  /* Subtle shadow below header for depth */
+    position: sticky;                         /* Stays at top when scrolling */
+    top: 0;                                   /* Sticks to the very top */
+    z-index: 1000;                           /* Appears above all other content */
 }
 
 .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 1200px;        /* Maximum width of header content */
+    margin: 0 auto;           /* Centers the header horizontally */
+    padding: 1rem 2rem;       /* 1rem top/bottom, 2rem left/right padding */
+    display: flex;            /* Use flexbox layout */
+    justify-content: space-between;  /* Logo on left, nav on right */
+    align-items: center;      /* Vertically center items */
 }
+
+/* ============================================================================
+   LOGO
+   The store name/brand displayed in the header
+   ============================================================================ */
 
 .logo {
-    font-size: 1.75rem;
-    font-weight: bold;
-    color: #1f2937;
+    font-size: 1.75rem;   /* 1.75 times the base font size (larger text) */
+    font-weight: bold;    /* Make text bold */
+    color: #1f2937;       /* Dark gray color */
 }
 
+/* ============================================================================
+   NAVIGATION
+   Contains all the navigation buttons (Shop, Login, Cart, etc.)
+   ============================================================================ */
+
 .nav {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+    display: flex;         /* Arrange buttons horizontally */
+    gap: 2rem;            /* 2rem space between each button */
+    align-items: center;  /* Vertically align buttons */
 }
 
 .nav-btn {
-    background: none;
-    border: none;
-    color: #4b5563;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.2s;
+    background: none;      /* No background color (transparent) */
+    border: none;          /* Remove default button border */
+    color: #4b5563;       /* Medium gray text color */
+    cursor: pointer;       /* Show pointer cursor on hover */
+    font-size: 1rem;      /* Standard font size */
+    display: flex;         /* Use flexbox for icon + text layout */
+    align-items: center;  /* Vertically center icon and text */
+    gap: 0.5rem;          /* Space between icon and text */
+    transition: color 0.2s;  /* Smooth color change over 0.2 seconds */
 }
 
+/* When user hovers over navigation buttons */
 .nav-btn:hover {
-    color: #1f2937;
+    color: #1f2937;  /* Change to darker gray */
 }
+
+/* ============================================================================
+   CART BADGE
+   The red circle showing number of items in cart
+   ============================================================================ */
 
 .cart-badge {
-    background: #ef4444;
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    margin-left: -8px;
+    background: #ef4444;      /* Red background */
+    color: white;             /* White text */
+    border-radius: 50%;       /* Make it a perfect circle */
+    width: 20px;              /* Fixed width */
+    height: 20px;             /* Fixed height (same as width for circle) */
+    display: inline-flex;     /* Inline flex for centering content */
+    align-items: center;      /* Center text vertically */
+    justify-content: center;  /* Center text horizontally */
+    font-size: 0.75rem;       /* Small font size */
+    margin-left: -8px;        /* Negative margin to overlap cart icon slightly */
 }
+
+/* ============================================================================
+   MAIN CONTENT AREA
+   Container for all page content (shop, cart, checkout, etc.)
+   ============================================================================ */
 
 .main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+    max-width: 1200px;  /* Maximum width for content */
+    margin: 0 auto;     /* Center horizontally */
+    padding: 2rem;      /* Padding all around */
 }
 
+/* ============================================================================
+   CATEGORY FILTERS
+   The buttons that filter products by category (All, Tops, Bottoms, etc.)
+   ============================================================================ */
+
 .categories {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
+    display: flex;        /* Arrange buttons horizontally */
+    gap: 0.5rem;         /* Small gap between buttons */
+    flex-wrap: wrap;     /* Wrap to next line if not enough space */
+    margin-bottom: 2rem; /* Space below category buttons */
 }
 
 .category-btn {
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 2rem;
-    background: white;
-    color: #4b5563;
-    cursor: pointer;
-    transition: all 0.2s;
+    padding: 0.5rem 1.5rem;  /* Vertical and horizontal padding */
+    border: none;             /* No border */
+    border-radius: 2rem;      /* Very rounded corners (pill shape) */
+    background: white;        /* White background */
+    color: #4b5563;          /* Gray text */
+    cursor: pointer;          /* Pointer cursor on hover */
+    transition: all 0.2s;    /* Smooth transition for all properties */
 }
 
+/* When user hovers over category button */
 .category-btn:hover {
-    background: #e5e7eb;
+    background: #e5e7eb;  /* Light gray background */
 }
 
+/* When category button is active (selected) */
 .category-btn.active {
-    background: #3b82f6;
-    color: white;
+    background: #3b82f6;  /* Blue background */
+    color: white;         /* White text */
 }
+
+/* ============================================================================
+   PRODUCTS GRID
+   The grid layout that displays all product cards
+   ============================================================================ */
 
 .products-grid {
-    display: grid;
+    display: grid;  /* Use CSS Grid layout */
+    /* Creates columns: as many as fit, each at least 300px wide, max 1fr (equal width) */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2rem;      /* 2rem space between product cards */
 }
+
+/* ============================================================================
+   PRODUCT CARD
+   Individual card for each product (contains 3D model and product info)
+   ============================================================================ */
 
 .product-card {
-    background: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: box-shadow 0.2s;
+    background: white;                      /* White background */
+    border-radius: 0.5rem;                  /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    overflow: hidden;                       /* Hide anything outside card boundaries */
+    transition: box-shadow 0.2s;           /* Smooth shadow transition */
 }
 
+/* When user hovers over product card */
 .product-card:hover {
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);  /* Larger shadow for "lift" effect */
 }
+
+/* ============================================================================
+   3D PRODUCT DISPLAY
+   Container for the Three.js 3D model
+   ============================================================================ */
 
 .product-3d {
-    width: 100%;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
+    width: 100%;          /* Full width of card */
+    height: 300px;        /* Fixed height */
+    position: relative;   /* For positioning child elements */
+    overflow: hidden;     /* Hide anything outside boundaries */
+    /* Purple gradient background (visible while 3D model loads) */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    cursor: grab;
-    user-select: none;
+    cursor: grab;         /* Show "grab" cursor */
+    user-select: none;    /* Prevent text selection while dragging */
 }
 
+/* When user is actively dragging the 3D model */
 .product-3d:active {
-    cursor: grabbing;
+    cursor: grabbing;  /* Show "grabbing" cursor */
 }
 
+/* The canvas element where Three.js renders */
 .product-3d canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
+    display: block;   /* Remove inline spacing */
+    width: 100%;      /* Full width */
+    height: 100%;     /* Full height */
 }
+
+/* ============================================================================
+   ROTATE HINT
+   Small overlay text showing "🔄 Drag to rotate"
+   ============================================================================ */
 
 .rotate-hint {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
+    position: absolute;              /* Position relative to .product-3d */
+    bottom: 10px;                    /* 10px from bottom */
+    right: 10px;                     /* 10px from right */
+    background: rgba(0,0,0,0.5);    /* Semi-transparent black */
+    color: white;                    /* White text */
+    padding: 0.25rem 0.5rem;        /* Small padding */
+    border-radius: 0.25rem;         /* Slightly rounded corners */
+    font-size: 0.75rem;             /* Small text */
 }
 
+/* ============================================================================
+   PRODUCT INFORMATION
+   Text section below the 3D model (name, description, price, etc.)
+   ============================================================================ */
+
 .product-info {
-    padding: 1rem;
+    padding: 1rem;  /* Padding around product info */
 }
 
 .product-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 1.125rem;      /* Slightly larger than normal text */
+    font-weight: 600;         /* Semi-bold */
+    margin-bottom: 0.5rem;    /* Space below name */
 }
 
 .product-desc {
-    color: #6b7280;
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
+    color: #6b7280;           /* Gray color for description */
+    font-size: 0.875rem;      /* Slightly smaller text */
+    margin-bottom: 1rem;      /* Space below description */
 }
 
 .product-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+    display: flex;                   /* Arrange price and stock horizontally */
+    justify-content: space-between;  /* Price on left, stock on right */
+    align-items: center;             /* Vertically align items */
+    margin-bottom: 1rem;             /* Space below footer */
 }
 
 .product-price {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.5rem;    /* Large text for price */
+    font-weight: bold;    /* Bold text */
 }
 
 .product-stock {
-    color: #6b7280;
-    font-size: 0.875rem;
+    color: #6b7280;       /* Gray color */
+    font-size: 0.875rem;  /* Small text */
 }
+
+/* ============================================================================
+   PRIMARY BUTTON
+   Main action buttons (Add to Cart, Login, Register, etc.)
+   ============================================================================ */
 
 .btn-primary {
-    width: 100%;
-    padding: 0.75rem;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 0.375rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
+    width: 100%;              /* Full width of container */
+    padding: 0.75rem;         /* Padding inside button */
+    background: #3b82f6;      /* Blue background */
+    color: white;             /* White text */
+    border: none;             /* No border */
+    border-radius: 0.375rem;  /* Rounded corners */
+    font-size: 1rem;          /* Standard font size */
+    cursor: pointer;          /* Pointer cursor */
+    transition: background 0.2s;  /* Smooth background color change */
 }
 
+/* When user hovers over primary button */
 .btn-primary:hover {
-    background: #2563eb;
+    background: #2563eb;  /* Darker blue */
 }
 
+/* When button is disabled (out of stock) */
 .btn-primary:disabled {
-    background: #d1d5db;
-    cursor: not-allowed;
+    background: #d1d5db;     /* Gray background */
+    cursor: not-allowed;     /* "Not allowed" cursor */
 }
+
+/* ============================================================================
+   AUTHENTICATION CONTAINER
+   Container for login and registration forms
+   ============================================================================ */
 
 .auth-container {
-    max-width: 400px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    padding: 2rem;
+    max-width: 400px;                       /* Maximum width */
+    margin: 0 auto;                         /* Center horizontally */
+    background: white;                      /* White background */
+    border-radius: 0.5rem;                  /* Rounded corners */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow */
+    padding: 2rem;                          /* Padding inside */
 }
 
+/* ============================================================================
+   AUTHENTICATION TABS
+   The Login/Register tab buttons
+   ============================================================================ */
+
 .auth-tabs {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    display: flex;        /* Arrange tabs horizontally */
+    gap: 1rem;           /* Space between tabs */
+    margin-bottom: 2rem; /* Space below tabs */
 }
 
 .auth-tab {
-    flex: 1;
-    padding: 0.75rem;
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #6b7280;
-    cursor: pointer;
+    flex: 1;                              /* Each tab takes equal width */
+    padding: 0.75rem;                     /* Padding inside tab */
+    background: none;                     /* No background */
+    border: none;                         /* No border */
+    border-bottom: 2px solid transparent; /* Invisible bottom border (for active state) */
+    font-size: 1rem;                      /* Standard font size */
+    font-weight: 600;                     /* Semi-bold */
+    color: #6b7280;                       /* Gray text */
+    cursor: pointer;                      /* Pointer cursor */
 }
 
+/* When tab is active (selected) */
 .auth-tab.active {
-    color: #3b82f6;
-    border-bottom-color: #3b82f6;
+    color: #3b82f6;               /* Blue text */
+    border-bottom-color: #3b82f6; /* Blue bottom border */
 }
+
+/* ============================================================================
+   FORM ELEMENTS
+   Styling for form fields, labels, and inputs
+   ============================================================================ */
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;  /* Space below each form group */
 }
 
 .form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    font-size: 0.875rem;
+    display: block;          /* Takes full width */
+    margin-bottom: 0.5rem;   /* Space below label */
+    font-weight: 500;        /* Medium weight */
+    font-size: 0.875rem;     /* Small text */
 }
 
 .form-input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.375rem;
-    font-size: 1rem;
+    width: 100%;              /* Full width */
+    padding: 0.75rem;         /* Padding inside input */
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 0.375rem;  /* Rounded corners */
+    font-size: 1rem;          /* Standard font size */
 }
 
+/* When user focuses on (clicks into) an input field */
 .form-input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;                                /* Remove default browser outline */
+    border-color: #3b82f6;                        /* Blue border */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Blue glow effect */
 }
+
+/* ============================================================================
+   ERROR MESSAGES
+   Red text shown when form validation fails
+   ============================================================================ */
 
 .error-msg {
-    color: #ef4444;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
+    color: #ef4444;          /* Red color */
+    font-size: 0.875rem;     /* Small text */
+    margin-top: 0.25rem;     /* Small space above message */
 }
+
+/* ============================================================================
+   DEMO INFO
+   Box showing demo credentials (admin/admin123)
+   ============================================================================ */
 
 .demo-info {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    background: #f3f4f6;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    color: #6b7280;
+    margin-top: 1rem;         /* Space above */
+    padding: 0.75rem;         /* Padding inside */
+    background: #f3f4f6;      /* Light gray background */
+    border-radius: 0.375rem;  /* Rounded corners */
+    font-size: 0.875rem;      /* Small text */
+    color: #6b7280;           /* Gray text */
 }
+
+/* ============================================================================
+   CART CONTAINER
+   Container for the shopping cart view
+   ============================================================================ */
 
 .cart-container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px;  /* Maximum width */
+    margin: 0 auto;    /* Center horizontally */
 }
 
+/* ============================================================================
+   CART ITEM
+   Individual item row in the shopping cart
+   ============================================================================ */
+
 .cart-item {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    align-items: center;
+    display: flex;            /* Arrange content horizontally */
+    gap: 1rem;               /* Space between elements */
+    padding: 1rem;           /* Padding inside */
+    background: white;        /* White background */
+    border-radius: 0.5rem;   /* Rounded corners */
+    margin-bottom: 1rem;     /* Space below item */
+    align-items: center;     /* Vertically center content */
 }
 
 .cart-item-emoji {
-    font-size: 3rem;
+    font-size: 3rem;  /* Large emoji size */
 }
 
 .cart-item-info {
-    flex: 1;
+    flex: 1;  /* Takes up remaining space (pushes controls to right) */
 }
 
 .cart-item-name {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-weight: 600;         /* Semi-bold */
+    margin-bottom: 0.25rem;   /* Small space below */
 }
 
 .cart-item-price {
-    color: #6b7280;
+    color: #6b7280;  /* Gray color */
 }
 
+/* ============================================================================
+   QUANTITY CONTROLS
+   The [-] [2] [+] buttons to adjust item quantity
+   ============================================================================ */
+
 .cart-item-controls {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+    display: flex;        /* Arrange buttons horizontally */
+    gap: 0.5rem;         /* Small space between elements */
+    align-items: center; /* Vertically center */
 }
 
 .qty-btn {
-    width: 32px;
-    height: 32px;
-    border: none;
-    background: #e5e7eb;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    font-size: 1rem;
+    width: 32px;              /* Fixed width */
+    height: 32px;             /* Fixed height (makes it square) */
+    border: none;             /* No border */
+    background: #e5e7eb;      /* Light gray background */
+    border-radius: 0.25rem;   /* Slightly rounded corners */
+    cursor: pointer;          /* Pointer cursor */
+    font-size: 1rem;          /* Standard font size */
 }
 
+/* When user hovers over quantity button */
 .qty-btn:hover {
-    background: #d1d5db;
+    background: #d1d5db;  /* Darker gray */
 }
 
 .qty-display {
-    width: 48px;
-    text-align: center;
+    width: 48px;         /* Fixed width */
+    text-align: center;  /* Center the number */
 }
 
+/* ============================================================================
+   CART TOTAL
+   Box showing total price and checkout button
+   ============================================================================ */
+
 .cart-total {
-    background: white;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    margin-top: 1rem;
+    background: white;        /* White background */
+    border-radius: 0.5rem;   /* Rounded corners */
+    padding: 1.5rem;         /* Padding inside */
+    margin-top: 1rem;        /* Space above */
 }
 
 .cart-total-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    display: flex;                   /* Arrange horizontally */
+    justify-content: space-between;  /* "Total:" on left, "$99.99" on right */
+    font-size: 1.5rem;               /* Large text */
+    font-weight: bold;               /* Bold text */
+    margin-bottom: 1rem;             /* Space below */
 }
+
+/* ============================================================================
+   CHECKOUT BUTTON
+   Green button to proceed to checkout
+   ============================================================================ */
 
 .btn-checkout {
-    width: 100%;
-    padding: 1rem;
-    background: #10b981;
-    color: white;
-    border: none;
-    border-radius: 0.375rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
+    width: 100%;              /* Full width */
+    padding: 1rem;            /* Padding inside */
+    background: #10b981;      /* Green background */
+    color: white;             /* White text */
+    border: none;             /* No border */
+    border-radius: 0.375rem;  /* Rounded corners */
+    font-size: 1rem;          /* Standard font size */
+    font-weight: 600;         /* Semi-bold */
+    cursor: pointer;          /* Pointer cursor */
 }
 
+/* When user hovers over checkout button */
 .btn-checkout:hover {
-    background: #059669;
+    background: #059669;  /* Darker green */
 }
+
+/* ============================================================================
+   CHECKOUT CONTAINER
+   Container for the checkout form
+   ============================================================================ */
 
 .checkout-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 0.5rem;
-    padding: 2rem;
+    max-width: 600px;         /* Maximum width */
+    margin: 0 auto;           /* Center horizontally */
+    background: white;        /* White background */
+    border-radius: 0.5rem;   /* Rounded corners */
+    padding: 2rem;           /* Padding inside */
 }
 
 .checkout-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: flex;            /* Vertical stacking */
+    flex-direction: column;   /* Stack form fields vertically */
+    gap: 1rem;               /* Space between fields */
 }
+
+/* ============================================================================
+   FORM ROW
+   Places two form fields side by side (City and ZIP code)
+   ============================================================================ */
 
 .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    display: grid;                      /* Use CSS Grid */
+    grid-template-columns: 1fr 1fr;     /* Two equal-width columns */
+    gap: 1rem;                          /* Space between columns */
 }
 
+/* ============================================================================
+   ORDER COMPLETE
+   Success message shown after checkout
+   ============================================================================ */
+
 .order-complete {
-    text-align: center;
-    padding: 3rem;
-    background: white;
-    border-radius: 0.5rem;
+    text-align: center;       /* Center all text */
+    padding: 3rem;            /* Large padding */
+    background: white;        /* White background */
+    border-radius: 0.5rem;   /* Rounded corners */
 }
 
 .order-complete-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;          /* Very large emoji */
+    margin-bottom: 1rem;      /* Space below */
 }
 
+/* ============================================================================
+   ADMIN PANEL
+   Styles for the admin product management interface
+   ============================================================================ */
+
 .admin-container {
-    max-width: 1200px;
+    max-width: 1200px;  /* Maximum width */
 }
 
 .admin-add-form {
-    background: white;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    background: white;        /* White background */
+    border-radius: 0.5rem;   /* Rounded corners */
+    padding: 1.5rem;         /* Padding inside */
+    margin-bottom: 2rem;     /* Space below */
 }
 
 .admin-form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 1rem;
+    display: grid;                      /* Use CSS Grid */
+    grid-template-columns: repeat(2, 1fr);  /* 2 equal columns */
+    gap: 1rem;                          /* Space between fields */
+    margin-bottom: 1rem;                /* Space below grid */
 }
 
 .admin-table {
-    background: white;
-    border-radius: 0.5rem;
-    overflow: hidden;
+    background: white;        /* White background */
+    border-radius: 0.5rem;   /* Rounded corners */
+    overflow: hidden;         /* Hide overflowing content (for rounded corners) */
 }
 
+/* ============================================================================
+   TABLE STYLES
+   Styling for the admin product table
+   ============================================================================ */
+
 table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%;              /* Full width */
+    border-collapse: collapse; /* Remove spacing between cells */
 }
 
 th {
-    background: #f3f4f6;
-    padding: 1rem;
-    text-align: left;
-    font-weight: 600;
+    background: #f3f4f6;  /* Light gray background for header */
+    padding: 1rem;        /* Padding inside header cells */
+    text-align: left;     /* Left-align text */
+    font-weight: 600;     /* Semi-bold */
 }
 
 td {
-    padding: 1rem;
-    border-top: 1px solid #e5e7eb;
+    padding: 1rem;                    /* Padding inside data cells */
+    border-top: 1px solid #e5e7eb;   /* Light gray border above each row */
 }
+
+/* ============================================================================
+   ICON BUTTONS
+   Small buttons with just icons (edit ✏️ and delete 🗑️)
+   ============================================================================ */
 
 .icon-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem;
-    color: #6b7280;
+    background: none;     /* No background */
+    border: none;         /* No border */
+    cursor: pointer;      /* Pointer cursor */
+    padding: 0.25rem;     /* Small padding */
+    color: #6b7280;       /* Gray color */
 }
 
+/* When user hovers over icon button */
 .icon-btn:hover {
-    color: #1f2937;
+    color: #1f2937;  /* Darker gray */
 }
+
+/* ============================================================================
+   UTILITY CLASSES
+   Reusable classes for common needs
+   ============================================================================ */
 
 .hidden {
-    display: none;
+    display: none;  /* Completely hides element (doesn't take up space) */
 }
 
 .empty-cart {
-    background: white;
-    border-radius: 0.5rem;
-    padding: 3rem;
-    text-align: center;
+    background: white;        /* White background */
+    border-radius: 0.5rem;   /* Rounded corners */
+    padding: 3rem;           /* Large padding */
+    text-align: center;      /* Center text */
 }
 
 .page-title {
-    font-size: 1.875rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
+    font-size: 1.875rem;      /* Large text */
+    font-weight: bold;        /* Bold */
+    margin-bottom: 1.5rem;    /* Space below */
 }
 
-/* Responsive Design */
+/* ============================================================================
+   RESPONSIVE DESIGN
+   Makes the site work well on mobile devices (tablets and phones)
+   ============================================================================ */
+
+/* When screen width is 768px or less (tablets and phones) */
 @media (max-width: 768px) {
+    
+    /* HEADER ADJUSTMENTS */
     .header-content {
-        padding: 1rem;
+        padding: 1rem;  /* Reduce padding on small screens */
     }
 
     .nav {
-        gap: 1rem;
+        gap: 1rem;  /* Reduce space between nav buttons */
     }
 
     .nav-btn {
-        font-size: 0.875rem;
+        font-size: 0.875rem;  /* Smaller text */
     }
 
     .logo {
-        font-size: 1.25rem;
+        font-size: 1.25rem;  /* Smaller logo */
     }
 
+    /* CONTENT ADJUSTMENTS */
     .main {
-        padding: 1rem;
+        padding: 1rem;  /* Reduce padding */
     }
 
+    /* PRODUCTS GRID - Stack products in single column on mobile */
     .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* One column instead of multiple */
     }
 
+    /* ADMIN FORM - Stack fields vertically on mobile */
     .admin-form-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* One column */
     }
 
+    /* CHECKOUT FORM - Stack City and ZIP vertically on mobile */
     .form-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* One column */
     }
 
+    /* TABLE ADJUSTMENTS */
     table {
-        font-size: 0.875rem;
+        font-size: 0.875rem;  /* Smaller text in tables */
     }
 
     th, td {
-        padding: 0.5rem;
+        padding: 0.5rem;  /* Reduce cell padding */
     }
 }
